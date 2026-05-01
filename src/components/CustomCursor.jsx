@@ -63,7 +63,7 @@ const CustomCursor = () => {
         animate={{
           height: isHovering ? 48 : 32,
           width: isHovering ? 48 : 32,
-          backgroundColor: isHovering ? 'rgba(52, 211, 153, 0.1)' : 'transparent',
+          backgroundColor: isHovering ? 'rgba(52, 211, 153, 0.1)' : 'rgba(52, 211, 153, 0)',
           border: isHovering ? '2px solid rgba(52, 211, 153, 0.8)' : '2px solid rgba(52, 211, 153, 0.5)',
           mixBlendMode: isHovering ? 'screen' : 'normal',
         }}

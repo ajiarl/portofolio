@@ -63,16 +63,16 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
         transformStyle: "preserve-3d",
         perspective: "1000px",
       }}
-      className="group relative w-full"
+      className="group relative w-full h-full"
     >
       <div 
-        className="relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-lg border border-white/10 shadow-2xl transition-all duration-300 hover:shadow-emerald-500/20"
+        className="relative h-full flex flex-col overflow-hidden rounded-xl bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-lg border border-white/10 shadow-2xl transition-all duration-300 hover:shadow-emerald-500/20"
         style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-emerald-500/10 to-pink-500/10 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
 
-        <div className="relative p-5 z-10" style={{ transform: "translateZ(20px)" }}>
-          <div className="relative overflow-hidden rounded-lg">
+        <div className="relative p-5 z-10 flex flex-col flex-grow" style={{ transform: "translateZ(20px)" }}>
+          <div className="relative overflow-hidden rounded-lg shrink-0">
             <img
               src={Img}
               alt={Title}
@@ -80,7 +80,7 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
             />
           </div>
 
-          <div className="mt-4 space-y-3" style={{ transform: "translateZ(25px)" }}>
+          <div className="mt-4 flex flex-col flex-grow gap-3" style={{ transform: "translateZ(25px)" }}>
             <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-200 via-emerald-200 to-pink-200 bg-clip-text text-transparent">
               {Title}
             </h3>
@@ -89,7 +89,7 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
               {Description}
             </p>
 
-            <div className="pt-4 flex items-center justify-between" style={{ transform: "translateZ(30px)" }}>
+            <div className="pt-4 flex items-center justify-between mt-auto" style={{ transform: "translateZ(30px)" }}>
               {ProjectLink ? (
                 <a
                   href={ProjectLink || "#"}
@@ -102,7 +102,7 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
                   <ExternalLink className="w-4 h-4" />
                 </a>
               ) : (
-                <span className="text-gray-500 text-sm">
+                <span className="text-gray-500 text-sm font-medium">
                   Demo Not Available
                 </span>
               )}
@@ -117,7 +117,7 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               ) : (
-                <span className="text-gray-500 text-sm">
+                <span className="text-gray-500 text-sm font-medium">
                   Details Not Available
                 </span>
               )}

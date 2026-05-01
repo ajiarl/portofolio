@@ -52,7 +52,7 @@ export default function Dashboard() {
           return (
             <Link
               key={to}
-              to={to}
+              to={`/dashboard/${to}`}
               onClick={() => setSidebarOpen(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium shrink-0 ${
                 active

@@ -167,7 +167,7 @@ const ProjectDetails = () => {
           content={
             project.Description
               ? project.Description.slice(0, 155)
-              : `Project ${project.Title} oleh Aji Arlando — Frontend Web Developer.`
+              : `Project ${project.Title} oleh Aji Arlando — Fullstack Web Developer.`
           }
         />
         <meta name="robots" content="index, follow" />
@@ -326,7 +326,7 @@ const ProjectDetails = () => {
           </div>
         </div>
 
-        <style jsx>{`
+        <style>{`
           @keyframes blob {
             0% {
               transform: translate(0px, 0px) scale(1);

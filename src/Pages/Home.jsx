@@ -46,8 +46,8 @@ const TechStack = memo(({ tech }) => (
 ));
 
 const CTAButton = memo(({ href, text, icon: Icon }) => (
-  <a href={href}>
-    <button className="group relative w-[160px]">
+  <a href={href} className="w-full sm:w-auto">
+    <button className="group relative w-full sm:w-[160px]">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0891b2] to-[#059669] rounded-xl opacity-50 blur-md group-hover:opacity-90 transition-all duration-700"></div>
       <div className="relative h-11 bg-[#030014] backdrop-blur-xl rounded-lg border border-white/10 leading-none overflow-hidden">
         <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-gradient-to-r from-[#0891b2]/20 to-[#059669]/20"></div>
@@ -78,7 +78,7 @@ const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
 const WORDS = ["Mahasiswa UIN Raden Fatah", "Web Developer", "Tech Enthusiast"];
-const TECH_STACK = ["React", "Javascript", "Node.js", "Tailwind"];
+const TECH_STACK = ["React", "Tailwind CSS", "Vite", "Supabase"];
 const SOCIAL_LINKS = [
   { icon: Github, link: "https://github.com/ajiarl", label: "GitHub Profile" },
   { icon: Linkedin, link: "https://www.linkedin.com/in/ajiarlando/", label: "LinkedIn Profile" },
@@ -141,12 +141,12 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Aji Arlando — Frontend Web Developer</title>
-        <meta name="description" content="Website resmi Aji Arlando, Front-End Web Developer. Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupaya memberikan solusi terbaik dalam setiap proyek yang saya kerjakan." />
+        <title>Aji Arlando — Fullstack Web Developer</title>
+        <meta name="description" content="Website resmi Aji Arlando, Fullstack Web Developer. Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupaya memberikan solusi terbaik dalam setiap proyek yang saya kerjakan." />
      <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://ajiarlando.com" />
-        <meta property="og:title" content="Aji Arlando — Frontend Web Developer" />
-     <meta property="og:description" content="Website resmi dan portofolio Aji Arlando, Front-End Web Developer." />
+        <meta property="og:title" content="Aji Arlando — Fullstack Web Developer" />
+     <meta property="og:description" content="Website resmi dan portofolio Aji Arlando, Fullstack Web Developer." />
         <meta property="og:url" content="https://ajiarlando.com" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{`
@@ -154,7 +154,7 @@ const Home = () => {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Aji Arlando",
-            "jobTitle": "Frontend Developer",
+            "jobTitle": "Fullstack Developer",
             "url": "https://ajiarlando.com",
             "sameAs": [
               "https://github.com/ajiarl",
@@ -213,8 +213,8 @@ const Home = () => {
                     </div>
 
                     {/* CTA Buttons & Social Links */}
-                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center w-full justify-start pt-4" data-aos="fade-up" data-aos-delay="1400">
-                      <div className="flex flex-row gap-3">
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center w-full justify-start pt-4" data-aos="fade-up" data-aos-delay="1400">
+                      <div className="flex flex-row w-full sm:w-auto gap-3">
                         <CTAButton href="#Portofolio" text="Projects" icon={ExternalLink} />
                         <CTAButton href="#Contact" text="Contact" icon={Mail} />
                       </div>

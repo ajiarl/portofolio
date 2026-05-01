@@ -145,7 +145,7 @@ const AboutPage = () => {
 
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-20px); }

@@ -4,7 +4,7 @@ Hello everyone\! 👋
 
 Let me introduce myself, I'm **Aji Arlando**. On this occasion, I'd like to share the portfolio website project that I've developed. built with React and Supabase, featuring a public-facing site and an admin dashboard.
 
-**Live Demo:** [https://ajiarlando.com](https://ajiarlando.com)
+**Live Demo:** [https://portofolio-ajiarlando.vercel.app/](https://portofolio-ajiarlando.vercel.app/)
 
 ---
 
@@ -272,14 +272,15 @@ Upload the contents of the `dist/` folder to your hosting provider.
 ## Credits & Contact
 
 **Aji Arlando**  
-Website: [ajiarlando.com](https://ajiarlando.com) · GitHub: [ajiarl](https://github.com/ajiarl)
+Website: [https://portofolio-ajiarlando.vercel.app/](https://portofolio-ajiarlando.vercel.app/) · GitHub: [ajiarl](https://github.com/ajiarl)
 
-Thanks to [LottieFiles](https://lottiefiles.com/free-animation/coding-NWhbxMOVgP) and Claude.
+Built with [React](https://react.dev/), [Supabase](https://supabase.com/), [Tailwind CSS](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/), and [Lucide Icons](https://lucide.dev/).
 
 ---
 
 ## Acknowledgements
+
 This project was inspired by and based on [Portfolio V5 by Eki Zulfar Rachman](https://github.com/EkiZR/Portofolio_V5).  
-Thanks, Eki! 🙏
+Thanks for the amazing template, Eki! 🙏
 
 ⭐ If this project helped you, consider giving it a star on GitHub!

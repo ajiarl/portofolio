@@ -67,7 +67,7 @@ function App() {
   <AnimatedBackground />
 </div>
       <CustomCursor />
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
           {/* PUBLIC */}
           <Route
