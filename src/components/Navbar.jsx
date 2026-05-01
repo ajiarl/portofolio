@@ -5,6 +5,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("Home");
+    const [scrollProgress, setScrollProgress] = useState(0);
     
     const navItems = [
         { href: "#Home", label: "Home" },
@@ -16,6 +17,13 @@ const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
+            
+            // Calculate scroll progress
+            const totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scroll = windowHeight > 0 ? totalScroll / windowHeight : 0;
+            setScrollProgress(scroll);
+
             const sections = navItems.map(item => {
                 const section = document.querySelector(item.href);
                 if (section) {
@@ -75,6 +83,12 @@ const Navbar = () => {
                     : "bg-transparent"
             }`}
         >
+            {/* Scroll Progress Bar */}
+            <div 
+                className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#22d3ee] to-[#34d399] transition-all duration-300 ease-out z-50"
+                style={{ width: `${scrollProgress * 100}%` }}
+            />
+            
             <div className="mx-auto px-[5%] sm:px-[5%] lg:px-[10%]">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
