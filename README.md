@@ -276,4 +276,10 @@ Website: [ajiarlando.com](https://ajiarlando.com) · GitHub: [ajiarl](https://gi
 
 Thanks to [LottieFiles](https://lottiefiles.com/free-animation/coding-NWhbxMOVgP) and Claude.
 
+---
+
+## Acknowledgements
+This project was inspired by and based on [Portfolio V5 by Eki Zulfar Rachman](https://github.com/EkiZR/Portofolio_V5).  
+Thanks, Eki! 🙏
+
 ⭐ If this project helped you, consider giving it a star on GitHub!
