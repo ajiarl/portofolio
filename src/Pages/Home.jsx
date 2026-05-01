@@ -95,8 +95,12 @@ const Home = () => {
   const [showGlobe, setShowGlobe] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowGlobe(true), 1200);
-    return () => clearTimeout(timer);
+    if (window.innerWidth >= 1024) {
+      setShowGlobe(true);
+    } else {
+      const timer = setTimeout(() => setShowGlobe(true), 1200);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   useEffect(() => {
