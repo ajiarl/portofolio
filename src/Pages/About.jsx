@@ -6,14 +6,14 @@ import TerminalAbout from "../components/TerminalAbout";
 
 // Memoized Components
 const Header = memo(() => (
-  <div className="text-center lg:mb-8 mb-2 px-[5%]">
+  <div className="text-center lg:mb-4 mb-2 px-[5%]">
     <div className="inline-block relative group">
       <h2 
         className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] to-[#34d399]" 
         data-aos="zoom-in-up"
         data-aos-duration="600"
       >
-        Skill Snapshot
+        About Me
       </h2>
     </div>
     <p 
@@ -21,15 +21,15 @@ const Header = memo(() => (
       data-aos="zoom-in-up"
       data-aos-duration="800"
     >
-      <Sparkles className="w-5 h-5 text-emerald-400" />
-      A glimpse into my technical journey
-      <Sparkles className="w-5 h-5 text-emerald-400" />
+      <UserCheck className="w-5 h-5 text-emerald-400" />
+      A glimpse into my journey
+      <UserCheck className="w-5 h-5 text-emerald-400" />
     </p>
   </div>
 ));
 
 const ProfileImage = memo(() => (
-  <div className="flex justify-end items-center sm:p-12 sm:py-0 sm:pb-0 p-0 py-2 pb-2">
+  <div className="flex justify-center lg:justify-end items-center sm:p-12 sm:py-0 sm:pb-0 p-0 py-2 pb-2 lg:mt-6 lg:pr-8">
     <div 
       className="relative group" 
       data-aos="fade-up"
@@ -43,7 +43,7 @@ const ProfileImage = memo(() => (
       </div>
 
       <div className="relative">
-        <div className="w-72 h-72 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-[0_0_40px_rgba(120,119,198,0.3)] transform transition-all duration-700 group-hover:scale-105">
+        <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden shadow-[0_0_40px_rgba(120,119,198,0.3)] transform transition-all duration-700 group-hover:scale-105">
           <div className="absolute inset-0 border-4 border-white/20 rounded-full z-20 transition-all duration-700 group-hover:border-white/40 group-hover:scale-105" />
           
           {/* Optimized overlay effects - disabled on mobile */}
@@ -69,68 +69,9 @@ const ProfileImage = memo(() => (
   </div>
 ));
 
-const StatCard = memo(({ icon: Icon, color, value, label, description, animation }) => (
-  <div data-aos={animation} data-aos-duration={1300} className="relative group">
-    <div className="relative z-10 bg-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-white/10 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full flex flex-col justify-between">
-      <div className={`absolute -z-10 inset-0 bg-gradient-to-br ${color} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
-      
-      <div className="flex items-center justify-between mb-4">
-        <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/10 transition-transform group-hover:rotate-6">
-          <Icon className="w-8 h-8 text-white" />
-        </div>
-        <span 
-          className="text-4xl font-bold text-white"
-          data-aos="fade-up-left"
-          data-aos-duration="1500"
-          data-aos-anchor-placement="top-bottom"
-        >
-          {value}
-        </span>
-      </div>
 
-      <div>
-        <p 
-          className="text-sm uppercase tracking-wider text-gray-300 mb-2"
-          data-aos="fade-up"
-          data-aos-duration="800"
-          data-aos-anchor-placement="top-bottom"
-        >
-          {label}
-        </p>
-        <div className="flex items-center justify-between">
-          <p 
-            className="text-xs text-gray-400"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-anchor-placement="top-bottom"
-          >
-            {description}
-          </p>
-          <ArrowUpRight className="w-4 h-4 text-white/50 group-hover:text-white transition-colors" />
-        </div>
-      </div>
-    </div>
-  </div>
-));
 
 const AboutPage = () => {
-  // Memoized calculations
-  const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
-    const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
-    const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
-    
-    const startDate = new Date("2021-11-06");
-    const today = new Date();
-    const experience = today.getFullYear() - startDate.getFullYear() -
-      (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
-
-    return {
-      totalProjects: storedProjects.length,
-      totalCertificates: storedCertificates.length,
-      YearExperience: experience
-    };
-  }, []);
-
   // Optimized AOS initialization
   useEffect(() => {
     const initAOS = () => {
@@ -155,37 +96,10 @@ const AboutPage = () => {
     };
   }, []);
 
-  // Memoized stats data
-  const statsData = useMemo(() => [
-    {
-      icon: Code,
-      color: "from-[#22d3ee] to-[#34d399]",
-      value: totalProjects,
-      label: "Total Projects",
-      description: "Innovative web solutions crafted",
-      animation: "fade-right",
-    },
-    {
-      icon: Award,
-      color: "from-[#34d399] to-[#22d3ee]",
-      value: totalCertificates,
-      label: "Certificates",
-      description: "Professional skills validated",
-      animation: "fade-up",
-    },
-    {
-      icon: Globe,
-      color: "from-[#22d3ee] to-[#34d399]",
-      value: YearExperience,
-      label: "Years of Experience",
-      description: "Continuous learning journey",
-      animation: "fade-left",
-    },
-  ], [totalProjects, totalCertificates, YearExperience]);
 
   return (
     <div
-      className="h-auto pb-[10%] text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] mt-10 sm-mt-0" 
+      className="h-auto pb-[10%] pt-4 sm:pt-8 text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] sm:mt-0" 
       id="About"
      itemScope
   itemType="https://schema.org/Person"
@@ -193,8 +107,8 @@ const AboutPage = () => {
     >
       <Header />
 
-      <div className="w-full mx-auto pt-8 sm:pt-12 relative">
-        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="w-full mx-auto pt-4 sm:pt-6 relative">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 lg:gap-16 lg:items-start items-center">
           <div className="space-y-6 text-center lg:text-left">
             <h2 
               className="text-3xl sm:text-4xl lg:text-5xl font-bold"
@@ -219,8 +133,8 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-        Saya adalah Web Developer sekaligus mahasiswa di UIN Raden Fatah Palembang yang menaruh minat besar pada pengembangan teknologi modern. Saya senang berkreasi dengan kode untuk membangun pengalaman web yang interaktif dan fungsional. Selalu semangat untuk terus mengeksplorasi hal baru di dunia teknologi.
-                  </p>
+              Saya adalah Web Developer dengan pengalaman lebih dari 3 tahun, sekaligus mahasiswa di UIN Raden Fatah Palembang yang menaruh minat besar pada pengembangan teknologi modern. Saya senang berkreasi dengan kode untuk membangun pengalaman web yang interaktif dan fungsional. Selalu semangat untuk terus mengeksplorasi hal baru di dunia teknologi.
+            </p>
 
       <TerminalAbout />
           </div>
@@ -228,13 +142,7 @@ const AboutPage = () => {
           <ProfileImage />
         </div>
 
-        <a href="#Portofolio">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 cursor-pointer">
-            {statsData.map((stat) => (
-              <StatCard key={stat.label} {...stat} />
-            ))}
-          </div>
-        </a>
+
       </div>
 
       <style jsx>{`

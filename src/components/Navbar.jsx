@@ -17,7 +17,7 @@ const Navbar = () => {
     const navItems = [
         { href: "#Home", label: "Home" },
         { href: "#About", label: "About" },
-        { href: "#Portofolio", label: "Projects" },
+        { href: "#Portofolio", label: "Portofolio" },
         { href: "#Contact", label: "Contact" },
     ];
 
@@ -65,7 +65,7 @@ const Navbar = () => {
         e.preventDefault();
         const section = document.querySelector(href);
         if (section) {
-            const top = section.offsetTop - 100;
+            const top = section.offsetTop - 64;
             window.scrollTo({
                 top: top,
                 behavior: "smooth"
