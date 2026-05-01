@@ -47,9 +47,9 @@ const TechStack = memo(({ tech }) => (
 
 const CTAButton = memo(({ href, text, icon: Icon }) => (
   <a href={href} className="w-full sm:w-auto">
-    <button className="group relative w-full sm:w-[160px]">
+    <div className="group relative w-full sm:w-[160px]">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0891b2] to-[#059669] rounded-xl opacity-50 blur-md group-hover:opacity-90 transition-all duration-700"></div>
-      <div className="relative h-11 bg-[#030014] backdrop-blur-xl rounded-lg border border-white/10 leading-none overflow-hidden">
+      <div className="relative h-11 bg-[#030014] backdrop-blur-xl rounded-lg border border-white/10 leading-none overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-gradient-to-r from-[#0891b2]/20 to-[#059669]/20"></div>
         <span className="absolute inset-0 flex items-center justify-center gap-2 text-sm group-hover:gap-3 transition-all duration-300">
           <span className="bg-gradient-to-r from-gray-200 to-white bg-clip-text text-transparent font-medium z-10">
@@ -58,7 +58,7 @@ const CTAButton = memo(({ href, text, icon: Icon }) => (
           <Icon className={`w-4 h-4 text-gray-200 ${text === 'Contact' ? 'group-hover:translate-x-1' : 'group-hover:rotate-45'} transform transition-all duration-300 z-10`} />
         </span>
       </div>
-    </button>
+    </div>
   </a>
 ));
 
@@ -92,6 +92,12 @@ const Home = () => {
   const [charIndex, setCharIndex] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
+  const [showGlobe, setShowGlobe] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowGlobe(true), 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const initAOS = () => {
@@ -235,7 +241,7 @@ const Home = () => {
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}>
                 <div className="relative w-full h-full pointer-events-auto flex items-center justify-center">
-                  <GlobeDemo />
+                  {showGlobe && <GlobeDemo />}
                 </div>
               </div>
             </div>
