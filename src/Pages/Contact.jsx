@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Share2, User, Mail, MessageSquare, Send } from "lucide-react";
 import { Link } from "react-router-dom";
-import SocialLinks from "../components/SocialLinks";
+
 import Komentar from "../components/Commentar";
 import Swal from "sweetalert2";
 import AOS from "aos";
@@ -224,9 +224,7 @@ const ContactPage = () => {
               </button>
             </form>
 
-            <div className="mt-10 pt-6 border-t border-white/10 flex justify-center space-x-6">
-              <SocialLinks />
-            </div>
+
           </div>
 
           <div className="  bg-white/5 backdrop-blur-xl rounded-3xl p-3 py-3 md:p-10 md:py-8 shadow-2xl transform transition-all duration-500 hover:shadow-[#22d3ee]/10">
