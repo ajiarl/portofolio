@@ -141,12 +141,11 @@ const ContactPage = () => {
         className="h-auto py-10 flex items-center justify-center 2xl:pr-[3.1%] lg:pr-[3.8%]  md:px-0"
         id="Contact"
       >
-        <div className="container px-[1%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-12" >
-          <div
-        
-            className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transform transition-all duration-500 hover:shadow-[#22d3ee]/10"
-          >
-            <div className="flex justify-between items-start mb-8">
+        <div className="container px-[1%]">
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transform transition-all duration-500 hover:shadow-[#22d3ee]/10">
+            <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-12">
+              <div>
+                <div className="flex justify-between items-start mb-8">
               <div>
                 <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] to-[#34d399]">
                   Hubungi
@@ -223,14 +222,14 @@ const ContactPage = () => {
                 {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
               </button>
             </form>
-
-
           </div>
-
-          <div className="  bg-white/5 backdrop-blur-xl rounded-3xl p-3 py-3 md:p-10 md:py-8 shadow-2xl transform transition-all duration-500 hover:shadow-[#22d3ee]/10">
+          
+          <div className="lg:border-l border-white/10 lg:pl-8">
             <Komentar />
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </div>
   );

@@ -382,7 +382,7 @@ const Komentar = () => {
     const totalComments = comments.length + (pinnedComment ? 1 : 0);
 
     return (
-        <div className="w-full bg-gradient-to-b from-white/10 to-white/5 rounded-2xl  backdrop-blur-xl shadow-xl" data-aos="fade-up" data-aos-duration="1000">
+        <div className="w-full" data-aos="fade-up" data-aos-duration="1000">
             <div className="p-6 border-b border-white/10" data-aos="fade-down" data-aos-duration="800">
                 <div className="flex items-center gap-3">
                     <div className="p-2 rounded-xl bg-cyan-500/20">
