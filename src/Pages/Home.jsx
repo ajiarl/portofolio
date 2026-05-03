@@ -153,10 +153,10 @@ const Home = () => {
       <Helmet>
         <title>Aji Arlando — Fullstack Web Developer</title>
         <meta name="description" content="Website resmi Aji Arlando, Fullstack Web Developer. Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupaya memberikan solusi terbaik dalam setiap proyek yang saya kerjakan." />
-     <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://ajiarlando.com" />
         <meta property="og:title" content="Aji Arlando — Fullstack Web Developer" />
-     <meta property="og:description" content="Website resmi dan portofolio Aji Arlando, Fullstack Web Developer." />
+        <meta property="og:description" content="Website resmi dan portofolio Aji Arlando, Fullstack Web Developer." />
         <meta property="og:url" content="https://ajiarlando.com" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{`
@@ -175,27 +175,27 @@ const Home = () => {
         `}</script>
       </Helmet>
 
-      <div className="min-h-screen bg-[#030014] px-[5%] sm:px-[5%] lg:px-[10%]" id="Home">
+      <div className="min-h-screen bg-[#030014] overflow-x-hidden px-[5%] sm:px-[5%] lg:px-[10%]" id="Home">
         <div className={`relative z-10 transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
-          <div className="container mx-auto h-screen">
-            <div className="flex flex-col lg:flex-row items-center justify-center h-full pt-20 sm:pt-16 md:justify-between gap-6 sm:gap-12 lg:gap-20">
-              
+          <div className="container mx-auto" style={{ minHeight: '100dvh' }}>
+            <div className="flex flex-col lg:flex-row items-center justify-center h-full pt-20 md:pt-16 md:justify-between gap-6 sm:gap-12 lg:gap-20">
+
               {/* Left Column */}
               <div className="w-full lg:w-1/2 order-1 lg:order-1"
                 data-aos="fade-right"
                 data-aos-delay="200">
-                
+
                 {/* Glassmorphism Code Editor Card */}
                 <div className="relative rounded-2xl bg-[#030014]/50 backdrop-blur-xl border border-white/10 p-6 sm:p-8 shadow-2xl overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#22d3ee]/10 to-[#34d399]/10 opacity-50"></div>
-                  
+
                   {/* Mac OS Window Controls */}
                   <div className="flex gap-2 mb-4 relative z-10">
                     <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                   </div>
-                  
+
                   <div className="space-y-4 sm:space-y-5 relative z-10">
                     <StatusBadge />
                     <MainTitle />
@@ -228,7 +228,7 @@ const Home = () => {
                         <CTAButton href="#Portofolio" text="Projects" icon={ExternalLink} />
                         <CTAButton href="#Contact" text="Contact" icon={Mail} />
                       </div>
-                      
+
                       {/* Social Links Dipindahkan ke dalam jendela */}
                       <div className="flex gap-4">
                         {SOCIAL_LINKS.map((social, index) => (
@@ -241,7 +241,7 @@ const Home = () => {
               </div>
 
               {/* Right Column - WebM Video */}
-              <div className="w-full py-0 sm:py-0 lg:w-1/2 h-[350px] sm:h-[400px] lg:h-[500px] xl:h-[600px] relative flex items-center justify-center order-2 lg:order-2 mt-4 lg:mt-0 overflow-visible"
+              <div className="w-full py-0 sm:py-0 lg:w-1/2 h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] relative flex items-center justify-center order-2 lg:order-2 mt-4 lg:mt-0"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}>
                 <div className="relative w-full h-full pointer-events-auto flex items-center justify-center">

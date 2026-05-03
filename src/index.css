@@ -17,20 +17,6 @@ body {
 	overflow-x: hidden;
 	background: #030014;
 	scroll-behavior: smooth !important;
-	-webkit-overflow-scrolling: touch;
-}
-
-/* Safari mobile safe area & navbar fix */
-@supports (padding-top: env(safe-area-inset-top)) {
-	nav.fixed {
-		padding-top: env(safe-area-inset-top);
-	}
-}
-
-/* Prevent Safari from clipping overflowing 3D canvas */
-canvas {
-	-webkit-transform: translateZ(0);
-	transform: translateZ(0);
 }
 
 
