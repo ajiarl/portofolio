@@ -11,6 +11,7 @@ import AnimatedBackground from "./components/Background";
 import { AnimatePresence } from "framer-motion";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
+import BackToTop from "./components/BackToTop";
 
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
@@ -69,6 +70,7 @@ function App() {
   <AnimatedBackground />
 </div>
       <CustomCursor />
+      <BackToTop />
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
           {/* PUBLIC */}

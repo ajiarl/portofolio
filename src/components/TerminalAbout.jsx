@@ -15,9 +15,13 @@ const TerminalAbout = () => {
       <div className="text-gray-300">
         <p>Available commands:</p>
         <ul className="list-none pl-4 space-y-1">
-          <li><span className="text-emerald-400">about</span>    - Siapa Aji?</li>
-          <li><span className="text-emerald-400">skills</span>   - Daftar skill teknis</li>
-          <li><span className="text-emerald-400">clear</span>    - Bersihkan terminal</li>
+          <li><span className="text-emerald-400">about</span>     - Siapa Aji?</li>
+          <li><span className="text-emerald-400">skills</span>    - Daftar skill teknis</li>
+          <li><span className="text-emerald-400">education</span> - Riwayat pendidikan</li>
+          <li><span className="text-emerald-400">contact</span>   - Info kontak</li>
+          <li><span className="text-emerald-400">hobbies</span>   - Hobi & interest</li>
+          <li><span className="text-emerald-400">whoami</span>    - Quick summary</li>
+          <li><span className="text-emerald-400">clear</span>     - Bersihkan terminal</li>
         </ul>
       </div>
     ),
@@ -33,7 +37,41 @@ const TerminalAbout = () => {
         <p>🔹 Backend: Node.js, Express</p>
         <p>🔹 Tools: Git, VSCode, NPM</p>
       </div>
-    )
+    ),
+    education: (
+      <div className="text-gray-300 space-y-1">
+        <p className="text-cyan-400">🎓 Pendidikan:</p>
+        <p>• S1 Sistem Informasi — UIN Raden Fatah Palembang</p>
+        <p>• Aktif sejak 2024</p>
+      </div>
+    ),
+    contact: (
+      <div className="text-gray-300 space-y-1">
+        <p className="text-cyan-400">📬 Kontak:</p>
+        <p>• Email   : ajiarlando127@gmail.com</p>
+        <p>• GitHub  : github.com/ajiarl</p>
+        <p>• LinkedIn: linkedin.com/in/ajiarlando</p>
+        <p>• IG      : @ajiii.ar</p>
+      </div>
+    ),
+    hobbies: (
+      <div className="text-gray-300 space-y-1">
+        <p className="text-cyan-400">🎮 Hobi & Interest:</p>
+        <p>• Ngoding sambil dengerin musik</p>
+        <p>• Explore teknologi & framework baru</p>
+        <p>• Baca novel</p>
+        <p>• Nonton tutorial dev di YouTube</p>
+      </div>
+    ),
+    whoami: (
+      <div className="text-gray-300 space-y-1">
+        <p><span className="text-emerald-400">name</span>     : Aji Arlando</p>
+        <p><span className="text-emerald-400">role</span>     : Fullstack Web Developer</p>
+        <p><span className="text-emerald-400">location</span> : Palembang, Indonesia</p>
+        <p><span className="text-emerald-400">status</span>   : <span className="text-green-400">Open to work ✓</span></p>
+        <p><span className="text-emerald-400">stack</span>    : React, Tailwind, Supabase</p>
+      </div>
+    ),
   };
 
   useEffect(() => {
