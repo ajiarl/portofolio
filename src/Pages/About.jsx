@@ -8,15 +8,15 @@ import TerminalAbout from "../components/TerminalAbout";
 const Header = memo(() => (
   <div className="text-center lg:mb-4 mb-2 px-[5%]">
     <div className="inline-block relative group">
-      <h2 
-        className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] to-[#34d399]" 
+      <h2
+        className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] to-[#34d399]"
         data-aos="zoom-in-up"
         data-aos-duration="600"
       >
         About Me
       </h2>
     </div>
-    <p 
+    <p
       className="mt-2 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg flex items-center justify-center gap-2"
       data-aos="zoom-in-up"
       data-aos-duration="800"
@@ -30,8 +30,8 @@ const Header = memo(() => (
 
 const ProfileImage = memo(() => (
   <div className="flex justify-center lg:justify-end items-center sm:p-12 sm:py-0 sm:pb-0 p-0 py-2 pb-2 lg:mt-6 lg:pr-8">
-    <div 
-      className="relative group" 
+    <div
+      className="relative group"
       data-aos="fade-up"
       data-aos-duration="1000"
     >
@@ -45,11 +45,11 @@ const ProfileImage = memo(() => (
       <div className="relative">
         <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] rounded-full overflow-hidden shadow-[0_0_40px_rgba(120,119,198,0.3)] transform transition-all duration-700 group-hover:scale-105">
           <div className="absolute inset-0 border-4 border-white/20 rounded-full z-20 transition-all duration-700 group-hover:border-white/40 group-hover:scale-105" />
-          
+
           {/* Optimized overlay effects - disabled on mobile */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-10 transition-opacity duration-700 group-hover:opacity-0 hidden sm:block" />
           <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/20 via-transparent to-blue-500/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden sm:block" />
-          
+
           <img
             src="/Photo.webp"
             alt="Aji Arlando - Fullstack Web Developer Palembang"
@@ -79,12 +79,12 @@ const AboutPage = () => {
   useEffect(() => {
     const initAOS = () => {
       AOS.init({
-        once: false, 
+        once: false,
       });
     };
 
     initAOS();
-    
+
     // Debounced resize handler
     let resizeTimer;
     const handleResize = () => {
@@ -102,10 +102,10 @@ const AboutPage = () => {
 
   return (
     <div
-      className="h-auto pb-[10%] pt-4 sm:pt-8 text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] sm:mt-0" 
+      className="h-auto pb-[10%] pt-4 sm:pt-8 text-white overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] sm:mt-0"
       id="About"
-     itemScope
-  itemType="https://schema.org/Person"
+      itemScope
+      itemType="https://schema.org/Person"
 
     >
       <Header />
@@ -113,7 +113,7 @@ const AboutPage = () => {
       <div className="w-full mx-auto pt-4 sm:pt-6 relative">
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 lg:gap-16 lg:items-start items-center">
           <div className="space-y-6 text-center lg:text-left">
-            <h2 
+            <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-bold"
               data-aos="fade-right"
               data-aos-duration="1000"
@@ -121,7 +121,7 @@ const AboutPage = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] to-[#34d399]">
                 Hello, I'm
               </span>
-              <span 
+              <span
                 className="block mt-2 text-gray-200"
                 data-aos="fade-right"
                 data-aos-duration="1300"
@@ -130,8 +130,8 @@ const AboutPage = () => {
                 Aji Arlando
               </span>
             </h2>
-            
-            <p 
+
+            <p
               className="text-base sm:text-lg lg:text-xl text-gray-400 leading-relaxed text-justify pb-4 sm:pb-0"
               data-aos="fade-right"
               data-aos-duration="1500"
@@ -139,7 +139,7 @@ const AboutPage = () => {
               Saya adalah Web Developer dengan pengalaman lebih dari 3 tahun, sekaligus mahasiswa di UIN Raden Fatah Palembang yang menaruh minat besar pada pengembangan teknologi modern. Saya senang berkreasi dengan kode untuk membangun pengalaman web yang interaktif dan fungsional. Selalu semangat untuk terus mengeksplorasi hal baru di dunia teknologi.
             </p>
 
-      <TerminalAbout />
+            <TerminalAbout />
           </div>
 
           <ProfileImage />

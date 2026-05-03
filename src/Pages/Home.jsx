@@ -21,18 +21,24 @@ const StatusBadge = memo(() => (
 
 const MainTitle = memo(() => (
   <div className="space-y-2" data-aos="fade-up" data-aos-delay="600">
-    <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
       <span className="relative inline-block">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#22d3ee] to-[#34d399] blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-white via-blue-100 to-emerald-200 bg-clip-text text-transparent">
-          Web
+          Aji
+        </span>
+      </span>
+      <span className="relative inline-block ml-3 sm:ml-4">
+        <span className="absolute -inset-2 bg-gradient-to-r from-[#22d3ee] to-[#34d399] blur-2xl opacity-20"></span>
+        <span className="relative bg-gradient-to-r from-white via-blue-100 to-emerald-200 bg-clip-text text-transparent">
+          Arlando
         </span>
       </span>
       <br />
       <span className="relative inline-block mt-2">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#22d3ee] to-[#34d399] blur-2xl opacity-20"></span>
-        <span className="relative bg-gradient-to-r from-[#22d3ee] to-[#34d399] bg-clip-text text-transparent">
-          Developer
+        <span className="relative bg-gradient-to-r from-[#22d3ee] to-[#34d399] bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl">
+          Fullstack Developer
         </span>
       </span>
     </h1>
