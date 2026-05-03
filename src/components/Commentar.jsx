@@ -226,16 +226,10 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
     );
 });
 
-const Komentar = () => {
+const Komentar = ({ onToast }) => {
     const [comments, setComments] = useState([]);
     const [pinnedComment, setPinnedComment] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [toast, setToast] = useState(null);
-
-    const showToast = (type, msg) => {
-        setToast({ type, msg });
-        setTimeout(() => setToast(null), 3000);
-    };
 
     useEffect(() => {
         // Initialize AOS
@@ -349,9 +343,9 @@ const Komentar = () => {
                 }]);
 
             if (error) throw error;
-            showToast('success', 'Komentar berhasil dikirim!');
+            onToast?.('success', 'Komentar berhasil dikirim!');
         } catch (error) {
-            showToast('error', 'Gagal mengirim komentar. Coba lagi.');
+            onToast?.('error', 'Gagal mengirim komentar. Coba lagi.');
             console.error('Error adding comment:', error);
         } finally {
             setIsSubmitting(false);
@@ -446,25 +440,6 @@ const Komentar = () => {
                     background: rgba(99, 102, 241, 0.7);
                 }
             `}</style>
-
-            {toast && (
-                <div className={`fixed bottom-20 right-6 z-[9999] flex items-center gap-3 px-4 py-3 rounded-xl border shadow-lg backdrop-blur-xl transition-all duration-300 ${
-                    toast.type === 'success'
-                        ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300'
-                        : 'bg-red-500/15 border-red-500/30 text-red-300'
-                }`}>
-                    {toast.type === 'success' ? (
-                        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                    ) : (
-                        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    )}
-                    <span className="text-sm font-medium">{toast.msg}</span>
-                </div>
-            )}
         </div>
     );
 };
