@@ -151,21 +151,32 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Aji Arlando — Fullstack Web Developer</title>
+        <title>Aji Arlando | Fullstack Web Developer Palembang</title>
         <meta name="description" content="Website resmi Aji Arlando, Fullstack Web Developer. Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupaya memberikan solusi terbaik dalam setiap proyek yang saya kerjakan." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://ajiarlando.com" />
+        <link rel="canonical" href="https://portofolio-ajiarlando.vercel.app" />
         <meta property="og:title" content="Aji Arlando — Fullstack Web Developer" />
         <meta property="og:description" content="Website resmi dan portofolio Aji Arlando, Fullstack Web Developer." />
-        <meta property="og:url" content="https://ajiarlando.com" />
+        <meta property="og:url" content="https://portofolio-ajiarlando.vercel.app" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Aji Arlando",
-            "jobTitle": "Fullstack Developer",
-            "url": "https://ajiarlando.com",
+            "jobTitle": "Fullstack Web Developer",
+            "url": "https://portofolio-ajiarlando.vercel.app",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Palembang",
+              "addressRegion": "Sumatera Selatan",
+              "addressCountry": "ID"
+            },
+            "knowsLanguage": ["id", "en"],
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "UIN Raden Fatah Palembang"
+            },
             "sameAs": [
               "https://github.com/ajiarl",
               "https://www.linkedin.com/in/ajiarlando/",

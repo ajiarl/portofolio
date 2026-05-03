@@ -51,10 +51,13 @@ const ProfileImage = memo(() => (
           <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/20 via-transparent to-blue-500/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden sm:block" />
           
           <img
-            src="/Photo.jpg"
-            alt="Profile"
+            src="/Photo.webp"
+            alt="Aji Arlando - Fullstack Web Developer Palembang"
             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
             loading="lazy"
+            decoding="async"
+            width={400}
+            height={400}
           />
 
           {/* Advanced hover effects - desktop only */}

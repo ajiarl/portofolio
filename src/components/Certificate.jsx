@@ -58,7 +58,8 @@ const Certificate = ({ ImgSertif }) => {
 					<img
 						className="certificate-image"
 						src={ImgSertif}
-						alt="Certificate"
+						alt="Sertifikat profesional Aji Arlando - Web Developer"
+						loading="lazy"
 						style={{
 							width: "100%",
 							height: "auto",
@@ -180,7 +181,8 @@ const Certificate = ({ ImgSertif }) => {
 					{/* Modal Image */}
 					<img
 						src={ImgSertif}
-						alt="Certificate Full View"
+						alt="Sertifikat profesional Aji Arlando - Web Developer"
+						loading="lazy"
 						style={{
 							display: "block",
 							maxWidth: "100%",

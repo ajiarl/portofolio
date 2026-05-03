@@ -247,7 +247,7 @@ const ProjectDetails = () => {
     );
   }
 
-  const projectUrl = `https://ajiarlando.com/project/${toSlug(project.Title)}`;
+  const projectUrl = `https://portofolio-ajiarlando.vercel.app/project/${toSlug(project.Title)}`;
 
   return (
     <>
@@ -258,28 +258,24 @@ const ProjectDetails = () => {
         />
       </div>
       <Helmet>
-        <title>{project.Title} — Aji Arlando</title>
+        <title>{project.Title} | Portfolio Aji Arlando</title>
         <meta
           name="description"
-          content={
-            project.Description
-              ? project.Description.slice(0, 155)
-              : `Project ${project.Title} oleh Aji Arlando — Fullstack Web Developer.`
-          }
+          content={`${project.Description?.slice(0, 140)} — Proyek karya Aji Arlando, Web Developer asal Palembang menggunakan ${project.TechStack?.join(', ')}.`}
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={projectUrl} />
         <meta
           property="og:title"
-          content={`${project.Title} — Aji Arlando`}
+          content={`${project.Title} | Portfolio Aji Arlando`}
         />
         <meta
           property="og:description"
-          content={project.Description?.slice(0, 155)}
+          content={`${project.Description?.slice(0, 140)} — Proyek karya Aji Arlando menggunakan ${project.TechStack?.join(', ')}.`}
         />
         <meta property="og:url" content={projectUrl} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={project.Img || "https://ajiarlando.com/Meta.png"} />
+        <meta property="og:image" content={project.Img || "https://portofolio-ajiarlando.vercel.app/Meta.png"} />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
@@ -290,7 +286,17 @@ const ProjectDetails = () => {
             "author": {
               "@type": "Person",
               "name": "Aji Arlando",
-              "url": "https://ajiarlando.com"
+              "url": "https://portofolio-ajiarlando.vercel.app",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Palembang",
+                "addressRegion": "Sumatera Selatan",
+                "addressCountry": "ID"
+              },
+              "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "UIN Raden Fatah Palembang"
+              }
             }
           }
         `}</script>

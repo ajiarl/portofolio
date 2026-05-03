@@ -83,8 +83,10 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
               />
               <img
                 src={Img}
-                alt={Title}
+                alt={`Screenshot project ${Title} - karya Aji Arlando Web Developer`}
                 onLoad={() => setImgLoaded(true)}
+                loading="lazy"
+                decoding="async"
                 className={`w-full h-full object-cover transform group-hover:scale-105 transition-all duration-500 ${
                   imgLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-sm scale-105"
                 }`}

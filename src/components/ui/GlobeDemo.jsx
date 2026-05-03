@@ -80,17 +80,24 @@ const globeConfig = {
   autoRotateSpeed: 2.0,
 };
 
+import { useInView } from "react-intersection-observer";
+
+// ... (sampleArcs and globeConfig stay the same)
+
+const GlobeSkeleton = () => (
+  <div className="w-64 h-64 rounded-full bg-gradient-to-br from-blue-900/30 to-cyan-900/30 animate-pulse border border-cyan-500/20" />
+);
+
 export function GlobeDemo() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   return (
-    <div className="absolute inset-0 w-full h-full z-10 flex items-center justify-center">
-      <Suspense fallback={
-        <div className="flex flex-col items-center justify-center">
-          <div className="w-8 h-8 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-          <span className="text-cyan-500 text-sm font-medium animate-pulse">Loading globe 3D...</span>
-        </div>
-      }>
-        <World data={sampleArcs} globeConfig={globeConfig} />
-      </Suspense>
+    <div ref={ref} className="absolute inset-0 w-full h-full z-10 flex items-center justify-center">
+      {inView && (
+        <Suspense fallback={<GlobeSkeleton />}>
+          <World data={sampleArcs} globeConfig={globeConfig} />
+        </Suspense>
+      )}
     </div>
   );
 }

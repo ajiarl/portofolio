@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
-Sitemap: https://ajiarlando.com/sitemap.xml
+
+# Block dashboard dari crawl
+Disallow: /dashboard
+Disallow: /login
+
+Sitemap: https://portofolio-ajiarlando.vercel.app/sitemap.xml
