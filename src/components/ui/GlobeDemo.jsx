@@ -82,7 +82,7 @@ const globeConfig = {
 
 export function GlobeDemo() {
   return (
-    <div className="absolute inset-0 w-full h-full z-10 flex items-center justify-center">
+    <div className="absolute inset-0 w-full h-full z-10 flex items-center justify-center overflow-visible">
       <Suspense fallback={
         <div className="flex flex-col items-center justify-center">
           <div className="w-8 h-8 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mb-4"></div>

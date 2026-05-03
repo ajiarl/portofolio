@@ -175,10 +175,10 @@ const Home = () => {
         `}</script>
       </Helmet>
 
-      <div className="min-h-screen bg-[#030014] overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%]" id="Home">
+      <div className="min-h-screen bg-[#030014] px-[5%] sm:px-[5%] lg:px-[10%]" id="Home">
         <div className={`relative z-10 transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
           <div className="container mx-auto h-screen">
-            <div className="flex flex-col lg:flex-row items-center justify-center h-full pt-16 md:justify-between gap-6 sm:gap-12 lg:gap-20">
+            <div className="flex flex-col lg:flex-row items-center justify-center h-full pt-20 sm:pt-16 md:justify-between gap-6 sm:gap-12 lg:gap-20">
               
               {/* Left Column */}
               <div className="w-full lg:w-1/2 order-1 lg:order-1"
@@ -241,7 +241,7 @@ const Home = () => {
               </div>
 
               {/* Right Column - WebM Video */}
-              <div className="w-full py-0 sm:py-0 lg:w-1/2 h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] relative flex items-center justify-center order-2 lg:order-2 mt-4 lg:mt-0"
+              <div className="w-full py-0 sm:py-0 lg:w-1/2 h-[350px] sm:h-[400px] lg:h-[500px] xl:h-[600px] relative flex items-center justify-center order-2 lg:order-2 mt-4 lg:mt-0 overflow-visible"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}>
                 <div className="relative w-full h-full pointer-events-auto flex items-center justify-center">
