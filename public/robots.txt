@@ -1,7 +1,14 @@
 User-agent: *
 Allow: /
 
-# Block dashboard dari crawl
+# Explicitly allow social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Block dashboard and sensitive areas
 Disallow: /dashboard
 Disallow: /login
 
