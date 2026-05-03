@@ -230,7 +230,12 @@ const Komentar = () => {
     const [comments, setComments] = useState([]);
     const [pinnedComment, setPinnedComment] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [error, setError] = useState('');
+    const [toast, setToast] = useState(null);
+
+    const showToast = (type, msg) => {
+        setToast({ type, msg });
+        setTimeout(() => setToast(null), 3000);
+    };
 
     useEffect(() => {
         // Initialize AOS
@@ -329,30 +334,25 @@ const Komentar = () => {
     }, []);
 
     const handleCommentSubmit = useCallback(async ({ newComment, userName, imageFile }) => {
-        setError('');
         setIsSubmitting(true);
         
         try {
             const profileImageUrl = await uploadImage(imageFile);
-            
             const { error } = await supabase
                 .from('portfolio_comments')
-                .insert([
-                    {
-                        content: newComment,
-                        user_name: userName,
-                        profile_image: profileImageUrl,
-                        is_pinned: false,
-                        created_at: new Date().toISOString()
-                    }
-                ]);
+                .insert([{
+                    content: newComment,
+                    user_name: userName,
+                    profile_image: profileImageUrl,
+                    is_pinned: false,
+                    created_at: new Date().toISOString()
+                }]);
 
-            if (error) {
-                throw error;
-            }
+            if (error) throw error;
+            showToast('success', 'Komentar berhasil dikirim!');
         } catch (error) {
-            setError('Failed to post comment. Please try again.');
-            console.error('Error adding comment: ', error);
+            showToast('error', 'Gagal mengirim komentar. Coba lagi.');
+            console.error('Error adding comment:', error);
         } finally {
             setIsSubmitting(false);
         }
@@ -394,15 +394,8 @@ const Komentar = () => {
                 </div>
             </div>
             <div className="p-6 space-y-6">
-                {error && (
-                    <div className="flex items-center gap-2 p-4 text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl" data-aos="fade-in">
-                        <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                        <p className="text-sm">{error}</p>
-                    </div>
-                )}
-                
                 <div>
-                    <CommentForm onSubmit={handleCommentSubmit} isSubmitting={isSubmitting} error={error} />
+                    <CommentForm onSubmit={handleCommentSubmit} isSubmitting={isSubmitting} />
                 </div>
 
                 <div className="space-y-4 h-[328px] overflow-y-auto overflow-x-hidden custom-scrollbar pt-1 pr-1 " data-aos="fade-up" data-aos-delay="200">
@@ -453,6 +446,25 @@ const Komentar = () => {
                     background: rgba(99, 102, 241, 0.7);
                 }
             `}</style>
+
+            {toast && (
+                <div className={`fixed bottom-20 right-6 z-[9999] flex items-center gap-3 px-4 py-3 rounded-xl border shadow-lg backdrop-blur-xl transition-all duration-300 ${
+                    toast.type === 'success'
+                        ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300'
+                        : 'bg-red-500/15 border-red-500/30 text-red-300'
+                }`}>
+                    {toast.type === 'success' ? (
+                        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    ) : (
+                        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    )}
+                    <span className="text-sm font-medium">{toast.msg}</span>
+                </div>
+            )}
         </div>
     );
 };

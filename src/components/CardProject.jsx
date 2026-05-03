@@ -5,6 +5,7 @@ import { toSlug } from "../utils/slug";
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 
 const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
+  const [imgLoaded, setImgLoaded] = React.useState(false);
   const handleLiveDemo = (e) => {
     if (!ProjectLink) {
       console.log("ProjectLink kosong");
@@ -73,11 +74,22 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
 
         <div className="relative p-5 z-10 flex flex-col flex-grow" style={{ transform: "translateZ(20px)" }}>
           <div className="relative overflow-hidden rounded-lg shrink-0">
-            <img
-              src={Img}
-              alt={Title}
-              className="w-full h-full object-cover aspect-[16/8] transform group-hover:scale-105 transition-transform duration-500"
-            />
+            <div className="relative w-full aspect-[16/8] overflow-hidden">
+              {/* Blur placeholder */}
+              <div
+                className={`absolute inset-0 bg-slate-700/50 animate-pulse transition-opacity duration-500 ${
+                  imgLoaded ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <img
+                src={Img}
+                alt={Title}
+                onLoad={() => setImgLoaded(true)}
+                className={`w-full h-full object-cover transform group-hover:scale-105 transition-all duration-500 ${
+                  imgLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-sm scale-105"
+                }`}
+              />
+            </div>
           </div>
 
           <div className="mt-4 flex flex-col flex-grow gap-3" style={{ transform: "translateZ(25px)" }}>

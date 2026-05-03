@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Swal from "sweetalert2";
 import { toSlug } from "../utils/slug";
+import { supabase } from "../supabase";
 
 const TECH_ICONS = {
   React: Globe,
@@ -123,34 +124,124 @@ const ProjectDetails = () => {
   const navigate = useNavigate();
   const [project, setProject] = useState(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [readProgress, setReadProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = document.documentElement;
+      const scrolled = el.scrollTop || document.body.scrollTop;
+      const total = el.scrollHeight - el.clientHeight;
+      setReadProgress(total > 0 ? (scrolled / total) * 100 : 0);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
-    // Cari project berdasarkan slug yang di-generate dari Title
-    const selectedProject = storedProjects.find(
-      (p) => toSlug(p.Title) === slug,
-    );
 
-    if (selectedProject) {
-      const enhancedProject = {
-        ...selectedProject,
-        Features: selectedProject.Features || [],
-        TechStack: selectedProject.TechStack || [],
-        Github: selectedProject.Github || "https://github.com/ajiarl",
-      };
-      setProject(enhancedProject);
-    }
+    const loadProject = async () => {
+      const stored = JSON.parse(localStorage.getItem("projects") || "[]");
+      const found = stored.find((p) => toSlug(p.Title) === slug);
+
+      if (found) {
+        setProject({
+          ...found,
+          Features: found.Features || [],
+          TechStack: found.TechStack || [],
+          Github: found.Github || "https://github.com/ajiarl"
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      const { data, error } = await supabase.from("projects").select("*");
+      if (error || !data) {
+        setIsLoading(false);
+        return;
+      }
+
+      localStorage.setItem("projects", JSON.stringify(data));
+      const match = data.find((p) => toSlug(p.Title) === slug);
+      if (match) {
+        setProject({
+          ...match,
+          Features: match.Features || [],
+          TechStack: match.TechStack || [],
+          Github: match.Github || "https://github.com/ajiarl"
+        });
+      }
+      setIsLoading(false);
+    };
+
+    loadProject();
   }, [slug]);
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#030014] px-[2%] sm:px-0 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-16">
+          {/* Back button skeleton */}
+          <div className="flex items-center gap-4 mb-8 md:mb-12">
+            <div className="h-10 w-24 rounded-xl bg-white/5 animate-pulse" />
+            <div className="h-4 w-48 rounded-lg bg-white/5 animate-pulse" />
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-16">
+            {/* Left col */}
+            <div className="space-y-6">
+              <div className="h-12 w-3/4 rounded-xl bg-white/5 animate-pulse" />
+              <div className="h-1 w-20 rounded-full bg-white/5 animate-pulse" />
+              <div className="space-y-2">
+                <div className="h-4 w-full rounded-lg bg-white/5 animate-pulse" />
+                <div className="h-4 w-full rounded-lg bg-white/5 animate-pulse" />
+                <div className="h-4 w-2/3 rounded-lg bg-white/5 animate-pulse" />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="h-20 rounded-xl bg-white/5 animate-pulse" />
+                <div className="h-20 rounded-xl bg-white/5 animate-pulse" />
+              </div>
+              <div className="flex gap-3">
+                <div className="h-12 w-32 rounded-xl bg-white/5 animate-pulse" />
+                <div className="h-12 w-32 rounded-xl bg-white/5 animate-pulse" />
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} className="h-8 w-20 rounded-xl bg-white/5 animate-pulse" />
+                ))}
+              </div>
+            </div>
+
+            {/* Right col */}
+            <div className="space-y-6">
+              <div className="w-full aspect-video rounded-2xl bg-white/5 animate-pulse" />
+              <div className="p-8 rounded-2xl bg-white/5 space-y-4">
+                <div className="h-6 w-32 rounded-lg bg-white/5 animate-pulse" />
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} className="h-4 w-full rounded-lg bg-white/[0.03] animate-pulse" />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Kalau sudah selesai loading tapi project tetap null (404)
   if (!project) {
     return (
       <div className="min-h-screen bg-[#030014] flex items-center justify-center">
-        <div className="text-center space-y-6 animate-fadeIn">
-          <div className="w-16 h-16 md:w-24 md:h-24 mx-auto border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
-          <h2 className="text-xl md:text-3xl font-bold text-white">
-            Loading Project...
-          </h2>
+        <div className="text-center space-y-4">
+          <p className="text-gray-400 text-lg">Project tidak ditemukan.</p>
+          <button
+            onClick={() => navigate("/")}
+            className="px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
+          >
+            Kembali ke Home
+          </button>
         </div>
       </div>
     );
@@ -160,6 +251,12 @@ const ProjectDetails = () => {
 
   return (
     <>
+      <div className="fixed top-0 left-0 w-full h-[3px] z-[9999] bg-white/5">
+        <div
+          className="h-full bg-gradient-to-r from-[#22d3ee] to-[#34d399] transition-all duration-75 ease-out"
+          style={{ width: `${readProgress}%` }}
+        />
+      </div>
       <Helmet>
         <title>{project.Title} — Aji Arlando</title>
         <meta
@@ -182,7 +279,7 @@ const ProjectDetails = () => {
         />
         <meta property="og:url" content={projectUrl} />
         <meta property="og:type" content="website" />
-        {project.Img && <meta property="og:image" content={project.Img} />}
+        <meta property="og:image" content={project.Img || "https://ajiarlando.com/Meta.png"} />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
