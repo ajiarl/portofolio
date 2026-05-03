@@ -58,6 +58,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
     const timer = setTimeout(() => {
       setIsLoading(false);
       setTimeout(() => {
+        sessionStorage.setItem("welcomed", "true");
         onLoadingComplete?.();
       }, 1000);
     }, 3400);

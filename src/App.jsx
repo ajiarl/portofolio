@@ -61,7 +61,10 @@ const ProjectPageLayout = () => (
 );
 
 function App() {
-  const [showWelcome, setShowWelcome] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(() => {
+    const welcomed = sessionStorage.getItem("welcomed");
+    return welcomed !== "true";
+  });
 
   return (
     

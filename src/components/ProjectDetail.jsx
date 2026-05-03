@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, useNavigate } from "react-router-dom";
+import SEO from "./SEO";
 import {
   ArrowLeft,
   ExternalLink,
@@ -257,50 +258,27 @@ const ProjectDetails = () => {
           style={{ width: `${readProgress}%` }}
         />
       </div>
-      <Helmet>
-        <title>{project.Title} | Portfolio Aji Arlando</title>
-        <meta
-          name="description"
-          content={`${project.Description?.slice(0, 140)} — Proyek karya Aji Arlando, Web Developer asal Palembang menggunakan ${project.TechStack?.join(', ')}.`}
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={projectUrl} />
-        <meta
-          property="og:title"
-          content={`${project.Title} | Portfolio Aji Arlando`}
-        />
-        <meta
-          property="og:description"
-          content={`${project.Description?.slice(0, 140)} — Proyek karya Aji Arlando menggunakan ${project.TechStack?.join(', ')}.`}
-        />
-        <meta property="og:url" content={projectUrl} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={project.Img || "https://portofolio-ajiarlando.vercel.app/Meta.png"} />
-        <script type="application/ld+json">{`
-          {
-            "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            "name": "${project.Title}",
-            "description": "${project.Description?.replace(/"/g, '\\"')}",
-            "url": "${projectUrl}",
-            "author": {
-              "@type": "Person",
-              "name": "Aji Arlando",
-              "url": "https://portofolio-ajiarlando.vercel.app",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Palembang",
-                "addressRegion": "Sumatera Selatan",
-                "addressCountry": "ID"
-              },
-              "alumniOf": {
-                "@type": "CollegeOrUniversity",
-                "name": "UIN Raden Fatah Palembang"
-              }
-            }
-          }
-        `}</script>
-      </Helmet>
+      <SEO
+        title={`${project.Title} | Aji Arlando`}
+        description={`${project.Description?.slice(0, 155)}...`}
+        image={project.Img}
+        url={projectUrl}
+        type="article"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "name": project.Title,
+          "description": project.Description,
+          "url": projectUrl,
+          "image": project.Img,
+          "author": {
+            "@type": "Person",
+            "name": "Aji Arlando",
+            "url": "https://portofolio-ajiarlando.vercel.app"
+          },
+          "keywords": project.TechStack?.join(", "),
+        }}
+      />
 
       <div className="min-h-screen bg-[#030014] px-[2%] sm:px-0 relative overflow-hidden">
         <div className="fixed inset-0">
